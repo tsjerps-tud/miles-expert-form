@@ -32,7 +32,7 @@ function reorder(arr: number[], index: number) {
 
 export default function Test() {
     const searchParams = useSearchParams()
-    const userId = searchParams.get('expertId')
+    const expertId = searchParams.get('expertId')
 
     const [reports, setReports] = useState<number[][]>(
         Array.from({ length: recordingCount }, _ => (

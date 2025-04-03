@@ -1,4 +1,5 @@
 import Test from './test';
+import { Suspense } from 'react';
 
 export default function Page() {
     return (
@@ -8,7 +9,9 @@ export default function Page() {
                 <p>(beschrijving)</p>
             </section>
 
-            <Test></Test>
+            <Suspense fallback={<p>Loading...</p>}>
+                <Test/>
+            </Suspense>
         </div>
     );
 }
