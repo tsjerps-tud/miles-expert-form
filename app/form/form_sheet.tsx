@@ -98,7 +98,9 @@ function FormRecordingSheet({ url, reports, setReports, show }: FormRecordingShe
             {/*Videos*/}
             <div className="col-span-full flex justify-center">
                 <div className="w-[60%]">
-                    <YouTube videoId={url} iframeClassName="w-full aspect-video" />
+                    <video controls>
+                        <source src={"recordings/" + url + ".mp4"} type="video/mp4" />
+                    </video>
                 </div>
             </div>
 
