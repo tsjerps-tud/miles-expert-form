@@ -11,8 +11,8 @@ export default function Page() {
         <div className="flex flex-col gap-12 sm:gap-16">
             <section className="bg-gray-100 p-10 mt-10">
                 {/*Title*/}
-                <h1 className="mb-2">Evaluation Form Experts</h1>
-                <MultiLine>{"asdf\nasdf"}</MultiLine>
+                <h1 className="mb-3">Evaluation Form Experts</h1>
+                <MultiLine>{"TODO: description\n(also a small description per section)"}</MultiLine>
 
                 {/*Spacer*/}
                 <div className="h-5" />

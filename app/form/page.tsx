@@ -1,9 +1,12 @@
 ﻿import PageWrapper from './form_wrapper';
+import { Suspense } from 'react';
 
 export default function Page() {
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
-            <PageWrapper/>
+            <Suspense fallback={<p>Loading...</p>}>
+                <PageWrapper/>
+            </Suspense>
         </div>
     );
 }

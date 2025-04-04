@@ -1,6 +1,9 @@
 ﻿
 export function setAt<T>(arr: T[], index: number, newValue: T) {
-    return arr.map((v, i) => i == index ? newValue : v)
+    const res = [...arr]
+    res[index] = newValue;
+
+    return res;
 }
 
 export function reorder(arr: number[], index: number) {
