@@ -33,7 +33,7 @@ export default function Page() {
                 <div className="h-5" />
 
                 <Link className="w-fit bg-blue-500 rounded-md p-4 cursor-pointer flex items-center justify-center no-underline"
-                    href={{ pathname: "/form", query: { expertId } }}>
+                    href={{ pathname: "/form", query: { expertId: expertId, state: 0 } }}>
                     <p className="text-white mx-5">Go to form</p>
                 </Link>
             </section>
