@@ -5,7 +5,6 @@ import { MultiLine } from '../../util/multiline';
 import { setAt } from '../../util/array';
 
 
-const pageCount = 45;
 const likertCount = 5;
 
 const description = "Listen to the three recordings one after another, and rank the statements for each."
@@ -20,23 +19,26 @@ const questions = [
 type ScoreSheetProps = {
     urls: string[],
 
-    scores: { [url: string]: number[] },
-    setScoresAction: (url: string, newScores: number[]) => void,
+    values: number[][],
+    setValuesAction: (newValues: number[][]) => void,
 
-    advance: () => void,
+    advanceAction: () => void,
 }
 
-export default function ScoreSheet({ urls, scores, setScoresAction, advance }: ScoreSheetProps) {
+export default function ScoreSheet({ urls, values, setValuesAction, advanceAction }: ScoreSheetProps) {
+    // Define constants
+    const pageCount = urls.length;
+
     // Define navigation
     const [page, setPage] = useState(0)
     const gotoNextPage = () => setPage(Math.min(page + 1, pageCount))
 
     // Get all shown data
     const shownUrl = urls[page]
-    const shownScores = scores[shownUrl]
-    const setShownScores = (newScores: number[]) =>
-        setScoresAction(shownUrl, newScores)
-    const filledIn = shownScores.every(it => it != -1)
+    const shownValue = values[page]
+    const setShownValue = (newScores: number[]) =>
+        setValuesAction(setAt(values, page, newScores))
+    const filledIn = shownValue.every(it => it != -1)
 
     return (
         <section className="bg-gray-100 p-10 mt-10">
@@ -83,9 +85,9 @@ export default function ScoreSheet({ urls, scores, setScoresAction, advance }: S
                              style={{ gridTemplateColumns: `repeat(${likertCount}, minmax(0, 1fr))` }}>
                             {Array.from({ length: likertCount }, (_, likertIndex) => (
                                 <input className="h-[2rem] cursor-pointer" key={likertIndex} type="checkbox"
-                                       checked={shownScores[questionIndex] == likertIndex}
+                                       checked={shownValue[questionIndex] == likertIndex}
                                        onChange={_ => {
-                                           setShownScores(setAt(shownScores, questionIndex, likertIndex))
+                                           setShownValue(setAt(shownValue, questionIndex, likertIndex))
                                        }} />
                             ))}
                         </div>
@@ -102,8 +104,8 @@ export default function ScoreSheet({ urls, scores, setScoresAction, advance }: S
                 {filledIn && <div className="p-3 bg-blue-300 no-underline cursor-pointer" onClick={event => {
                     event.preventDefault();
 
-                    if (page == pageCount - 1) advance(); else gotoNextPage();
-                }}>{page == pageCount - 1 ? 'Go to 2. Ordering >' : '>'}
+                    if (page == pageCount - 1) advanceAction(); else gotoNextPage();
+                }}>{page == pageCount - 1 ? 'Next section >' : '>'}
                 </div>}
             </div>
         </section>

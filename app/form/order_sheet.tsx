@@ -7,28 +7,30 @@ const description = "These recordings were part of three separate sessions. Esti
 const orderQuestion = "Which recording was recorded first?"
 
 const recordingCount = 2
-const pageCount = 15
 
 
 type OrderSheetProps = {
     urls: string[][],
 
-    orders: { [page: number]: number},
-    setOrderAction: (page: number, newOrder: number) => void,
+    values: number[],
+    setValuesAction: (newValues: number[]) => void,
 
     advance: () => void,
 }
-export function OrderSheet({ urls, orders, setOrderAction, advance }: OrderSheetProps) {
+export function OrderSheet({ urls, values, setValuesAction, advance }: OrderSheetProps) {
+    // Define constants
+    const pageCount = urls.length;
+
     // Define navigation
     const [page, setPage] = useState<number>(0)
     const gotoNextPage = () => setPage(Math.min(page + 1, pageCount))
 
     // Get all shown data
     const shownUrls = urls[page]
-    const shownOrder = orders[page]
-    const setShownOrder = (newOrder: number) =>
-        setOrderAction(page, newOrder)
-    const filledIn = shownOrder != -1
+    const shownValue = values[page]
+    const setShownValue = (newValue: number) =>
+        setValuesAction(setAt(values, page, newValue))
+    const filledIn = shownValue != -1
 
     return (
         <section className="bg-gray-100 p-10 mt-10">
@@ -54,8 +56,8 @@ export function OrderSheet({ urls, orders, setOrderAction, advance }: OrderSheet
                         <div key={i}>
                             {/*TODO: shuffling of order*/}
                             <OrderButton buttonValue={i}
-                                         value={shownOrder}
-                                         onClick={() => setShownOrder(i)} />
+                                         value={shownValue}
+                                         onClick={() => setShownValue(i)} />
                         </div>
                     ))}
                 </div>
@@ -71,7 +73,7 @@ export function OrderSheet({ urls, orders, setOrderAction, advance }: OrderSheet
                     event.preventDefault();
 
                     if (page == pageCount - 1) advance(); else gotoNextPage();
-                }}>{page == pageCount - 1 ? 'Go to 3. Finishing >' : '>'}
+                }}>{page == pageCount - 1 ? 'Next section >' : '>'}
                 </div>}
             </div>
         </section>
