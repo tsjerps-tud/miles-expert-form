@@ -5,7 +5,7 @@ export default function Page() {
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
             <Suspense fallback={<p>Loading...</p>}>
-                <PageWrapper/>
+                <PageWrapper />
             </Suspense>
         </div>
     );

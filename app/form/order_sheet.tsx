@@ -1,42 +1,40 @@
-﻿import { reorder, setAt } from '../../util/array';
+﻿import { setAt } from '../../util/array';
 import React, { useState } from 'react';
-import { MultiLine } from '../../util/multiline';
 import { PageButton } from '../../util/page_button';
-
-
-const description = "These recordings were part of three separate sessions. Estimate which recording was part of which session."
-const orderQuestion = "Which recording was recorded first?"
-
-const recordingCount = 2
+import { OrderingConfig } from '../../form_config';
 
 
 type OrderSheetProps = {
-    urls: string[][],
+    sheet: OrderingConfig,
+    participantId: number,
 
     values: number[],
     setValuesAction: (newValues: number[]) => void,
 
     advanceAction: () => void,
 }
-export function OrderSheet({ urls, values, setValuesAction, advanceAction }: OrderSheetProps) {
+
+export function OrderSheet({ sheet, participantId, values, setValuesAction, advanceAction }: OrderSheetProps) {
     // Define constants
+    const urls = sheet.urls[participantId];
     const pageCount = urls.length;
+    const recordingCount = 2;
 
     // Define navigation
-    const [page, setPage] = useState<number>(0)
-    const gotoNextPage = () => setPage(Math.min(page + 1, pageCount))
+    const [page, setPage] = useState<number>(0);
+    const gotoNextPage = () => setPage(Math.min(page + 1, pageCount));
 
     // Get all shown data
-    const shownUrls = urls[page]
-    const shownValue = values[page]
+    const shownUrls = urls[page];
+    const shownValue = values[page];
     const setShownValue = (newValue: number) =>
-        setValuesAction(setAt(values, page, newValue))
-    const filledIn = shownValue != -1
+        setValuesAction(setAt(values, page, newValue));
+    const filledIn = shownValue != -1;
 
     return (
         <>
             <div className="bg-green-200 p-10 rounded-3xl shadow-xl">
-                <div className="text-center italic">{orderQuestion}</div>
+                <div className="text-center italic">{sheet.title}</div>
 
                 <div className="p-5 my-7 grid grid-cols-2 bg-green-300 rounded-xl gap-4 items-center">
                     {Array.from({ length: recordingCount }, (_, i) => (
@@ -65,9 +63,9 @@ export function OrderSheet({ urls, values, setValuesAction, advanceAction }: Ord
                 page={page}
                 pageCount={pageCount}
                 gotoNextPageAction={gotoNextPage}
-                advanceAction={advanceAction}/>
+                advanceAction={advanceAction} />
         </>
-    )
+    );
 }
 
 
@@ -78,20 +76,21 @@ type OrderButtonProps = {
 }
 
 export function OrderButton({ buttonValue, value, onClick }: OrderButtonProps) {
-    const picked = buttonValue == value
+    const picked = buttonValue == value;
 
-    const bg = picked ? "bg-blue-500" : "bg-white"
-    const text = value == -1 ? "..." : picked ? "this one" : ""
-    const textClassName = picked ? "text-white" : "text-black"
+    const bg = picked ? 'bg-blue-500' : 'bg-white';
+    const text = value == -1 ? '...' : picked ? 'this one' : '';
+    const textClassName = picked ? 'text-white' : 'text-black';
 
     return (
-        <div className={`col-span-1 ${bg} h-[3rem] rounded-md border-2 border-gray-400 border-solid p-4 cursor-pointer flex items-center justify-center`}
-             onClick={event => {
-                 event.preventDefault()
-                 onClick()
-             }}
+        <div
+            className={`col-span-1 ${bg} h-[3rem] rounded-md border-2 border-gray-400 border-solid p-4 cursor-pointer flex items-center justify-center`}
+            onClick={event => {
+                event.preventDefault();
+                onClick();
+            }}
         >
             <p className={textClassName}>{text}</p>
         </div>
-    )
+    );
 }

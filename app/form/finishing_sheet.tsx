@@ -13,7 +13,7 @@ type FinishingSheetProps = {
 }
 
 export function FinishingSheet({ config, values }: FinishingSheetProps) {
-    const output = JSON.stringify(values)
+    const output = JSON.stringify(values);
 
     return (
         <section className="bg-gray-100 p-10 mt-10">

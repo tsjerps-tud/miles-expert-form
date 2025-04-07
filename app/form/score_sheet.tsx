@@ -1,44 +1,40 @@
-﻿'use client'
-
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { setAt } from '../../util/array';
 import { PageButton } from '../../util/page_button';
-
-
-const likertCount = 5;
-
-const scoreQuestion = "How would you rate the following recording?"
+import { ScoringConfig } from '../../form_config';
 
 
 type ScoreSheetProps = {
-    urls: string[],
-    questions: string[],
+    sheet: ScoringConfig,
+    participantId: number,
 
     values: number[][],
     setValuesAction: (newValues: number[][]) => void,
 
     advanceAction: () => void,
 }
-export default function ScoreSheet({ urls, questions, values, setValuesAction, advanceAction }: ScoreSheetProps) {
+export default function ScoreSheet({ sheet, participantId, values, setValuesAction, advanceAction }: ScoreSheetProps) {
     // Define constants
+    const likertCount = sheet.likertCount;
+    const urls = sheet.urls[participantId];
     const pageCount = urls.length;
 
     // Define navigation
-    const [page, setPage] = useState(0)
-    const gotoNextPage = () => setPage(Math.min(page + 1, pageCount))
+    const [page, setPage] = useState(0);
+    const gotoNextPage = () => setPage(Math.min(page + 1, pageCount));
 
     // Get all shown data
-    const shownUrl = urls[page]
-    const shownValue = values[page]
+    const shownUrl = urls[page];
+    const shownValue = values[page];
     const setShownValue = (newScores: number[]) =>
-        setValuesAction(setAt(values, page, newScores))
-    const filledIn = shownValue.every(it => it != -1)
+        setValuesAction(setAt(values, page, newScores));
+    const filledIn = shownValue.every(it => it != -1);
 
     return (
         <>
             {/*Scoring sheet*/}
             <div className="grid grid-cols-2 gap-2 bg-blue-200 rounded-3xl shadow-xl p-10">
-                <div className="col-span-full text-center italic">{scoreQuestion}</div>
+                <div className="col-span-full text-center italic">{sheet.title}</div>
 
                 {/*Video*/}
                 <div className="col-span-full my-3 flex justify-center">
@@ -65,7 +61,7 @@ export default function ScoreSheet({ urls, questions, values, setValuesAction, a
                 </div>
 
                 {/*Questions*/}
-                {questions.map((question, questionIndex) => (
+                {sheet.questions.map((question, questionIndex) => (
                     <div className={`col-span-full grid grid-cols-2 gap-x-4 bg-blue-100 rounded-xl p-3 items-center`}
                          key={questionIndex}>
                         {/*Question container*/}
@@ -93,7 +89,7 @@ export default function ScoreSheet({ urls, questions, values, setValuesAction, a
                 page={page}
                 pageCount={pageCount}
                 gotoNextPageAction={gotoNextPage}
-                advanceAction={advanceAction}/>
+                advanceAction={advanceAction} />
         </>
-    )
+    );
 }
