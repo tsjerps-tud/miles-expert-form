@@ -1,6 +1,7 @@
 ﻿import { reorder, setAt } from '../../util/array';
 import React, { useState } from 'react';
 import { MultiLine } from '../../util/multiline';
+import { PageButton } from '../../util/page_button';
 
 
 const description = "These recordings were part of three separate sessions. Estimate which recording was part of which session."
@@ -15,9 +16,9 @@ type OrderSheetProps = {
     values: number[],
     setValuesAction: (newValues: number[]) => void,
 
-    advance: () => void,
+    advanceAction: () => void,
 }
-export function OrderSheet({ urls, values, setValuesAction, advance }: OrderSheetProps) {
+export function OrderSheet({ urls, values, setValuesAction, advanceAction }: OrderSheetProps) {
     // Define constants
     const pageCount = urls.length;
 
@@ -33,17 +34,13 @@ export function OrderSheet({ urls, values, setValuesAction, advance }: OrderShee
     const filledIn = shownValue != -1
 
     return (
-        <section className="bg-gray-100 p-10 mt-10">
-            {/*Title*/}
-            <h2 className="mb-2">2. Ordering of recordings</h2>
-            <MultiLine className="mb-5">{description}</MultiLine>
-
-            <div className="bg-green-200 p-10">
+        <>
+            <div className="bg-green-200 p-10 rounded-3xl">
                 <div className="p-4">
                     <p>{orderQuestion}</p>
                 </div>
 
-                <div className="p-5 grid grid-cols-2 bg-green-300 gap-4 items-center">
+                <div className="p-5 grid grid-cols-2 bg-green-300 rounded-xl gap-4 items-center">
                     {Array.from({ length: recordingCount }, (_, i) => (
                         <video key={shownUrls[i]} controls>
                             <source src={'recordings/' + shownUrls[i] + '.mp4'} type="video/mp4" />
@@ -63,20 +60,15 @@ export function OrderSheet({ urls, values, setValuesAction, advance }: OrderShee
                 </div>
             </div>
 
-            {/*Pagination*/}
-            <div className="flex gap-4 justify-center">
-                <div className="p-3 bg-green-300">
-                    {'Page ' + (page + 1) + '/' + pageCount}
-                </div>
-
-                {filledIn && <div className="p-3 bg-green-300 no-underline cursor-pointer" onClick={event => {
-                    event.preventDefault();
-
-                    if (page == pageCount - 1) advance(); else gotoNextPage();
-                }}>{page == pageCount - 1 ? 'Next section >' : '>'}
-                </div>}
-            </div>
-        </section>
+            {/*Page button*/}
+            <PageButton
+                enableAdvance={filledIn}
+                color="green-300"
+                page={page}
+                pageCount={pageCount}
+                gotoNextPageAction={gotoNextPage}
+                advanceAction={advanceAction}/>
+        </>
     )
 }
 

@@ -15,7 +15,7 @@ type PageWrapperProps = {
 
 }
 export default function PageWrapper({  }: PageWrapperProps) {
-    // Get expert ID from search paramas
+    // Get expert ID from search params
     const searchParams = useSearchParams()
     const expertId = Number(searchParams.get('expertId'))
     const startState = Number(searchParams.get('state'))
@@ -43,7 +43,7 @@ export default function PageWrapper({  }: PageWrapperProps) {
     return <>
         {currentSheet.type == "scoring" && <ScoreSheet
             key={sheetNumber}
-            urls={(currentSheet as ScoringConfig).urls[expertId]}
+            urls={currentSheet.urls[expertId]}
             values={values[sheetNumber] as number[][]}
             setValuesAction={(newValues: number[][]) => setValues(setAt(values, sheetNumber, newValues))}
             advanceAction={advance}/>}
@@ -51,10 +51,10 @@ export default function PageWrapper({  }: PageWrapperProps) {
         {currentSheet.type == "ordering" &&
             <OrderSheet
                 key={sheetNumber}
-                urls={(currentSheet as OrderingConfig).urls[expertId]}
+                urls={currentSheet.urls[expertId]}
                 values={values[sheetNumber] as number[]}
                 setValuesAction={(newValues: number[]) => setValues(setAt(values, sheetNumber, newValues))}
-                advance={advance}/>}
+                advanceAction={advance}/>}
 
         {currentSheet.type == "finishing" &&
             <FinishingSheet

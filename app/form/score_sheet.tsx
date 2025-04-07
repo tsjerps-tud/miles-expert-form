@@ -3,16 +3,17 @@
 import React, { useState } from 'react';
 import { MultiLine } from '../../util/multiline';
 import { setAt } from '../../util/array';
+import { PageButton } from '../../util/page_button';
 
 
 const likertCount = 5;
 
 const description = "Listen to the three recordings one after another, and rank the statements for each."
 const questions = [
-    "The algorithm could respond well to the pupil.",
-    "The pupil could respond well to the algorithm.",
-    "The pupil got inspiration from the algorithm.",
-    "The pupil enjoyed playing this song with the algorithm.",
+    "Algorithm responds well to pupil",
+    "Pupil responds well to algorithm",
+    "Pupil got inspired by algorithm",
+    "Pupil enjoyed playing with algorithm",
 ]
 
 
@@ -24,7 +25,6 @@ type ScoreSheetProps = {
 
     advanceAction: () => void,
 }
-
 export default function ScoreSheet({ urls, values, setValuesAction, advanceAction }: ScoreSheetProps) {
     // Define constants
     const pageCount = urls.length;
@@ -41,13 +41,9 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
     const filledIn = shownValue.every(it => it != -1)
 
     return (
-        <section className="bg-gray-100 p-10 mt-10">
-            {/*Title*/}
-            <h2 className="mb-2">1. Statements per recording</h2>
-            <MultiLine className="mb-5">{description}</MultiLine>
-
-            {/*Recording sheet*/}
-            <div className="grid grid-cols-2 gap-4 bg-blue-200 p-10">
+        <>
+            {/*Scoring sheet*/}
+            <div className="grid grid-cols-2 gap-4 bg-blue-200 rounded-3xl p-10">
                 {/*Video*/}
                 <div className="col-span-full flex justify-center">
                     <div className="w-[60%]">
@@ -61,24 +57,22 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
                 <div className="col-span-1 p-4"></div>
 
                 {/*Title row*/}
-                <div className="col-span-1 p-2 grid bg-blue-300"
+                <div className="col-span-1 p-2 grid bg-blue-300 rounded-xl"
                      style={{ gridTemplateColumns: `repeat(${likertCount}, minmax(0, 1fr))` }}>
-                    <p className="text-center">Very bad</p>
+                    <p className="text-center">Very poorly</p>
 
                     {Array.from({ length: likertCount - 2 }, (_, i) => (
                         <p className="text-center" key={i}>.</p>
                     ))}
 
-                    <p className="text-center">Very good</p>
+                    <p className="text-center">Very much</p>
                 </div>
 
                 {/*Questions*/}
                 {questions.map((question, questionIndex) => (
-                    <div className="col-span-full grid grid-cols-2" key={questionIndex}>
+                    <div className={`col-span-full grid grid-cols-2 bg-blue-100 rounded-xl p-3 items-center`} key={questionIndex}>
                         {/*Question container*/}
-                        <div className="col-span-1">
-                            <p>{question}</p>
-                        </div>
+                        <div className="col-span-1 ml-4">{question}</div>
 
                         {/*Input container*/}
                         <div className="col-span-1 grid grid-cols-5 items-center"
@@ -95,19 +89,14 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
                 ))}
             </div>
 
-            {/*Pagination*/}
-            <div className="flex gap-4 justify-center">
-                <div className="p-3 bg-blue-300">
-                    {'Page ' + (page + 1) + '/' + pageCount}
-                </div>
-
-                {filledIn && <div className="p-3 bg-blue-300 no-underline cursor-pointer" onClick={event => {
-                    event.preventDefault();
-
-                    if (page == pageCount - 1) advanceAction(); else gotoNextPage();
-                }}>{page == pageCount - 1 ? 'Next section >' : '>'}
-                </div>}
-            </div>
-        </section>
+            {/*Page button*/}
+            <PageButton
+                enableAdvance={filledIn}
+                color="blue-300"
+                page={page}
+                pageCount={pageCount}
+                gotoNextPageAction={gotoNextPage}
+                advanceAction={advanceAction}/>
+        </>
     )
 }
