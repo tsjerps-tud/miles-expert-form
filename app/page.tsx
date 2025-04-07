@@ -5,7 +5,7 @@ import { MultiLine } from '../util/multiline';
 import Link from 'next/link';
 
 export default function Page() {
-    const [expertId, setExpertId] = React.useState<number>(0);
+    const [participantId, setParticipantId] = React.useState<number>(0);
 
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
@@ -18,16 +18,16 @@ export default function Page() {
                 <div className="h-5" />
 
                 <div className="grid grid-cols-2 gap-4">
-                    <MultiLine>{'What is your \'expert ID\'?\n(the questions will be shuffled based on this ID)'}</MultiLine>
+                    <MultiLine>{'What is your \'participant ID\'?\n(the questions will be shuffled based on this ID)'}</MultiLine>
 
                     {/*Input field*/}
-                    <input value={expertId.toString()}
+                    <input value={participantId.toString()}
                            className="bg-white rounded-md border-2 border-gray-400 border-solid p-1 px-5"
                            onChange={event => {
-                               const newExpertId = Number(event.target.value);
+                               const newParticipantId = Number(event.target.value);
 
-                               if (!isNaN(newExpertId))
-                                   setExpertId(newExpertId);
+                               if (!isNaN(newParticipantId))
+                                   setParticipantId(newParticipantId);
                            }} />
                 </div>
 
@@ -36,7 +36,7 @@ export default function Page() {
 
                 <Link
                     className="w-fit bg-blue-500 rounded-md p-4 cursor-pointer flex items-center justify-center no-underline"
-                    href={{ pathname: '/form', query: { expertId: expertId, state: 0 } }}>
+                    href={{ pathname: '/form', query: { participantId: participantId, state: 0 } }}>
                     <p className="text-white mx-5">Go to form</p>
                 </Link>
             </section>
