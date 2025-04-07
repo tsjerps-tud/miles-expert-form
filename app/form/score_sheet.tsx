@@ -1,7 +1,6 @@
 ﻿'use client'
 
 import React, { useState } from 'react';
-import { MultiLine } from '../../util/multiline';
 import { setAt } from '../../util/array';
 import { PageButton } from '../../util/page_button';
 
@@ -9,23 +8,18 @@ import { PageButton } from '../../util/page_button';
 const likertCount = 5;
 
 const scoreQuestion = "How would you rate the following recording?"
-const questions = [
-    "Algorithm responds well to pupil",
-    "Pupil responds well to algorithm",
-    "Pupil got inspired by algorithm",
-    "Pupil enjoyed playing with algorithm",
-]
 
 
 type ScoreSheetProps = {
     urls: string[],
+    questions: string[],
 
     values: number[][],
     setValuesAction: (newValues: number[][]) => void,
 
     advanceAction: () => void,
 }
-export default function ScoreSheet({ urls, values, setValuesAction, advanceAction }: ScoreSheetProps) {
+export default function ScoreSheet({ urls, questions, values, setValuesAction, advanceAction }: ScoreSheetProps) {
     // Define constants
     const pageCount = urls.length;
 
@@ -43,12 +37,12 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
     return (
         <>
             {/*Scoring sheet*/}
-            <div className="grid grid-cols-2 gap-4 bg-blue-200 rounded-3xl shadow-xl p-10">
+            <div className="grid grid-cols-2 gap-2 bg-blue-200 rounded-3xl shadow-xl p-10">
                 <div className="col-span-full text-center italic">{scoreQuestion}</div>
 
                 {/*Video*/}
                 <div className="col-span-full my-3 flex justify-center">
-                    <div className="w-[60%] p-5 bg-blue-300 rounded-2xl">
+                    <div className="w-[70%] p-5 bg-blue-300 rounded-2xl">
                         <video key={shownUrl} controls>
                             <source src={'recordings/' + shownUrl + '.mp4'} type="video/mp4" />
                         </video>

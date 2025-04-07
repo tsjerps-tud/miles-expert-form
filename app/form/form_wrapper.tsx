@@ -43,6 +43,7 @@ export default function PageWrapper({  }: PageWrapperProps) {
     return <>
         {currentSheet.type == "scoring" && <ScoreSheet
             key={sheetNumber}
+            questions={currentSheet.questions}
             urls={currentSheet.urls[expertId]}
             values={values[sheetNumber] as number[][]}
             setValuesAction={(newValues: number[][]) => setValues(setAt(values, sheetNumber, newValues))}

@@ -5,6 +5,7 @@
 
 export type ScoringConfig = {
     type: "scoring",
+    questions: string[],
     urls: { [id: string]: string[] }
 }
 
@@ -15,6 +16,16 @@ export type FinishingConfig = {
 export type SheetConfig = OrderingConfig | ScoringConfig | FinishingConfig;
 
 export type Config = SheetConfig[];
+
+// --
+
+
+const scoreQuestions = [
+    "Algorithm responds well to pupil",
+    "Pupil responds well to algorithm",
+    "Pupil got inspired by algorithm",
+    "Pupil enjoyed playing with algorithm",
+]
 
 export const config: Config = [
     {
@@ -77,6 +88,7 @@ export const config: Config = [
 
     {
         type: "scoring",
+        questions: scoreQuestions,
         urls: {
             0: [
                 "p5s3p1",
@@ -134,6 +146,7 @@ export const config: Config = [
 
     {
         type: "scoring",
+        questions: scoreQuestions,
         urls: {
             0: [
                 "p5s3p3",
@@ -191,6 +204,7 @@ export const config: Config = [
 
     {
         type: "scoring",
+        questions: scoreQuestions,
         urls: {
             0: [
                 "p5s3p2",
