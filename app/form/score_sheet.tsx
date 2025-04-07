@@ -39,7 +39,7 @@ export default function ScoreSheet({ sheet, participantId, values, setValuesActi
                 {/*Video*/}
                 <div className="col-span-full my-3 flex justify-center">
                     <div className="w-[70%] p-5 bg-blue-300 rounded-2xl">
-                        <video key={shownUrl} controls>
+                        <video key={shownUrl} controls className="size-full aspect-video">
                             <source src={'recordings/' + shownUrl + '.mp4'} type="video/mp4" />
                         </video>
                     </div>

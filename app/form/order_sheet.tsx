@@ -38,7 +38,7 @@ export function OrderSheet({ sheet, participantId, values, setValuesAction, adva
 
                 <div className="p-5 my-7 grid grid-cols-2 bg-green-300 rounded-xl gap-4 items-center">
                     {Array.from({ length: recordingCount }, (_, i) => (
-                        <video key={shownUrls[i]} controls>
+                        <video key={shownUrls[i]} controls className="size-full aspect-video">
                             <source src={'recordings/' + shownUrls[i] + '.mp4'} type="video/mp4" />
                         </video>
                     ))}
