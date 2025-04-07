@@ -35,12 +35,10 @@ export function OrderSheet({ urls, values, setValuesAction, advanceAction }: Ord
 
     return (
         <>
-            <div className="bg-green-200 p-10 rounded-3xl">
-                <div className="p-4">
-                    <p>{orderQuestion}</p>
-                </div>
+            <div className="bg-green-200 p-10 rounded-3xl shadow-xl">
+                <div className="text-center italic">{orderQuestion}</div>
 
-                <div className="p-5 grid grid-cols-2 bg-green-300 rounded-xl gap-4 items-center">
+                <div className="p-5 my-7 grid grid-cols-2 bg-green-300 rounded-xl gap-4 items-center">
                     {Array.from({ length: recordingCount }, (_, i) => (
                         <video key={shownUrls[i]} controls>
                             <source src={'recordings/' + shownUrls[i] + '.mp4'} type="video/mp4" />
@@ -91,7 +89,6 @@ export function OrderButton({ buttonValue, value, onClick }: OrderButtonProps) {
              onClick={event => {
                  event.preventDefault()
                  onClick()
-                 // setShownOrder(i == 0 ? 1 : 4)
              }}
         >
             <p className={textClassName}>{text}</p>

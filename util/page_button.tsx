@@ -14,7 +14,7 @@ type PageButtonProps = {
 export function PageButton({ enableAdvance, color, page, pageCount, gotoNextPageAction, advanceAction }: PageButtonProps) {
     return (
         <div
-            className={`absolute right-0 bottom-0 m-10 p-10 bg-${color} rounded-full ${enableAdvance ? "cursor-pointer" : ""}`}
+            className={`absolute right-0 bottom-0 m-10 p-10 bg-${color} rounded-full shadow-xl ${enableAdvance ? "cursor-pointer" : ""}`}
             onClick={event => {
                 if (!enableAdvance) return;
 

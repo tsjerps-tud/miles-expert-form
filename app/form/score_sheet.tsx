@@ -8,7 +8,7 @@ import { PageButton } from '../../util/page_button';
 
 const likertCount = 5;
 
-const description = "Listen to the three recordings one after another, and rank the statements for each."
+const scoreQuestion = "How would you rate the following recording?"
 const questions = [
     "Algorithm responds well to pupil",
     "Pupil responds well to algorithm",
@@ -43,10 +43,12 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
     return (
         <>
             {/*Scoring sheet*/}
-            <div className="grid grid-cols-2 gap-4 bg-blue-200 rounded-3xl p-10">
+            <div className="grid grid-cols-2 gap-4 bg-blue-200 rounded-3xl shadow-xl p-10">
+                <div className="col-span-full text-center italic">{scoreQuestion}</div>
+
                 {/*Video*/}
-                <div className="col-span-full flex justify-center">
-                    <div className="w-[60%]">
+                <div className="col-span-full my-3 flex justify-center">
+                    <div className="w-[60%] p-5 bg-blue-300 rounded-2xl">
                         <video key={shownUrl} controls>
                             <source src={'recordings/' + shownUrl + '.mp4'} type="video/mp4" />
                         </video>
@@ -57,7 +59,7 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
                 <div className="col-span-1 p-4"></div>
 
                 {/*Title row*/}
-                <div className="col-span-1 p-2 grid bg-blue-300 rounded-xl"
+                <div className="col-span-1 grid mr-3"
                      style={{ gridTemplateColumns: `repeat(${likertCount}, minmax(0, 1fr))` }}>
                     <p className="text-center">Very poorly</p>
 
@@ -70,7 +72,8 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
 
                 {/*Questions*/}
                 {questions.map((question, questionIndex) => (
-                    <div className={`col-span-full grid grid-cols-2 bg-blue-100 rounded-xl p-3 items-center`} key={questionIndex}>
+                    <div className={`col-span-full grid grid-cols-2 gap-x-4 bg-blue-100 rounded-xl p-3 items-center`}
+                         key={questionIndex}>
                         {/*Question container*/}
                         <div className="col-span-1 ml-4">{question}</div>
 
@@ -81,7 +84,7 @@ export default function ScoreSheet({ urls, values, setValuesAction, advanceActio
                                 <input className="h-[2rem] cursor-pointer" key={likertIndex} type="checkbox"
                                        checked={shownValue[questionIndex] == likertIndex}
                                        onChange={_ => {
-                                           setShownValue(setAt(shownValue, questionIndex, likertIndex))
+                                           setShownValue(setAt(shownValue, questionIndex, likertIndex));
                                        }} />
                             ))}
                         </div>
