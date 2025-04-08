@@ -9,7 +9,7 @@ export default function Page() {
 
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
-            <section className="bg-gray-100 p-10 mt-10">
+            <section className="bg-amber-100 p-10 rounded-3xl shadow-xl">
                 {/*Title*/}
                 <h1 className="mb-3">Evaluation Form Experts</h1>
                 <MultiLine>{'TODO: description\n(also a small description per section)'}</MultiLine>

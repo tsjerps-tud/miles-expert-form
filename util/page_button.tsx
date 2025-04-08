@@ -5,10 +5,10 @@ type PageButtonProps = {
     enableAdvance: boolean,
     color: string,
 
-    page: number,
-    pageCount: number,
+    page: number | undefined,
+    pageCount: number | undefined,
 
-    gotoNextPageAction: () => void,
+    gotoNextPageAction: () => void | undefined,
     advanceAction: () => void,
 }
 export function PageButton({ enableAdvance, color, page, pageCount, gotoNextPageAction, advanceAction }: PageButtonProps) {
@@ -24,9 +24,9 @@ export function PageButton({ enableAdvance, color, page, pageCount, gotoNextPage
             }}
         >
             <div className="flex gap-4 justify-center">
-                <h2 className="p-3">
+                {page == undefined || <h2 className="p-3">
                     {'Page ' + (page + 1) + '/' + pageCount}
-                </h2>
+                </h2>}
 
                 {enableAdvance &&
                     <h2

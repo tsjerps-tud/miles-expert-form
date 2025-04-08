@@ -7,6 +7,7 @@ import { OrderSheet } from './order_sheet';
 import { FinishingSheet } from './finishing_sheet';
 import { config, OrderingConfig, ScoringConfig } from '../../form_config';
 import { setAt } from '../../util/array';
+import InfoSheet from './info_sheet';
 
 
 type PageWrapperProps = {}
@@ -59,5 +60,10 @@ export default function PageWrapper({}: PageWrapperProps) {
                 key={sheetNumber}
                 config={config}
                 values={values} />}
+
+        {currentSheet.type == 'info' &&
+            <InfoSheet
+                sheet={currentSheet}
+                advanceAction={advance} />}
     </>;
 }
