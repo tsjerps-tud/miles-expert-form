@@ -17,15 +17,16 @@ export type ScoringConfig = {
 export type FinishingConfig = {
     type: 'finishing',
     title: string,
+    description: string,
 }
 
-export type TextConfig = {
-    type: 'text',
+export type InfoConfig = {
+    type: 'info',
     title: string,
     description: string,
 }
 
-export type SheetConfig = OrderingConfig | ScoringConfig | FinishingConfig | TextConfig;
+export type SheetConfig = OrderingConfig | ScoringConfig | FinishingConfig | InfoConfig;
 
 export type Config = SheetConfig[];
 
@@ -40,6 +41,14 @@ const scoreQuestions = [
 ];
 
 export const config: Config = [
+    {
+        type: 'info',
+        title: 'First up: ordering',
+        description: 'In this exercise, you will be shown two videos.\n' +
+            'These two videos have the same player, algorithm and song. The only difference is that of them was recorded at the start of the research, and one of them was recorded at the end.\n' +
+            'Your job is to select the recording which was recorded first. Good luck!',
+    },
+
     {
         type: 'ordering',
         title: 'Which recording was recorded first?',
@@ -96,6 +105,12 @@ export const config: Config = [
                 ['p4s1p3', 'p4s4p3']
             ]
         }
+    },
+
+    {
+        type: 'info',
+        title: 'Next: scoring',
+        description: 'In the rest of this form, you will be shown recordings and will be asked to rate them along 4 categories. Good luck!',
     },
 
     {
@@ -159,6 +174,12 @@ export const config: Config = [
     },
 
     {
+        type: 'info',
+        title: 'You\'re halfway there!',
+        description: 'Now\'s a good time to take a break if you want to.',
+    },
+
+    {
         type: 'scoring',
         title: 'How would you rate the following recording?',
         questions: scoreQuestions,
@@ -216,6 +237,12 @@ export const config: Config = [
                 'p5s2p1'
             ]
         }
+    },
+
+    {
+        type: 'info',
+        title: 'One more sheet to go!',
+        description: 'Fifteen more recordings to go, you can do this!',
     },
 
     {
@@ -280,6 +307,7 @@ export const config: Config = [
 
     {
         type: 'finishing',
-        title: 'That\'s it!'
-    }
+        title: 'That\'s it!',
+        description: 'That was it!\nThank you so much for filling in the form. The only thing left is to copy the following results and send them to me!',
+    },
 ];

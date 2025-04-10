@@ -27,7 +27,8 @@ export default function PageWrapper({}: PageWrapperProps) {
             case 'ordering':
                 return (sheet as OrderingConfig).urls[participantId].map(_ => -1);
             case 'finishing':
-                return [];
+            case 'info':
+                return null;
         }
     }));
 
@@ -58,7 +59,7 @@ export default function PageWrapper({}: PageWrapperProps) {
         {currentSheet.type == 'finishing' &&
             <FinishingSheet
                 key={sheetNumber}
-                config={config}
+                sheet={currentSheet}
                 values={values} />}
 
         {currentSheet.type == 'info' &&

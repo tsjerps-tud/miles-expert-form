@@ -12,7 +12,7 @@ type InfoSheetProps = {
 export default function InfoSheet({ sheet, advanceAction }: InfoSheetProps) {
     return (
         <>
-            {/*Scoring sheet*/}
+            {/*Info sheet*/}
             <div className="bg-amber-100 rounded-3xl shadow-xl p-10">
                 {/*Title*/}
                 <h1 className="mb-3">{sheet.title}</h1>
@@ -25,7 +25,7 @@ export default function InfoSheet({ sheet, advanceAction }: InfoSheetProps) {
             {/*Page button*/}
             <PageButton
                 enableAdvance={true}
-                color="amber-300"
+                color="amber-200"
                 page={undefined}
                 pageCount={undefined}
                 gotoNextPageAction={undefined}

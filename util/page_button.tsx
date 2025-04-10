@@ -20,7 +20,7 @@ export function PageButton({ enableAdvance, color, page, pageCount, gotoNextPage
 
                 event.preventDefault();
 
-                if (page == pageCount - 1) advanceAction(); else gotoNextPageAction();
+                if (page == undefined || page == pageCount - 1) advanceAction(); else gotoNextPageAction();
             }}
         >
             <div className="flex gap-4 justify-center">

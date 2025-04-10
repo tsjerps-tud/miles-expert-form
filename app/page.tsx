@@ -12,10 +12,7 @@ export default function Page() {
             <section className="bg-amber-100 p-10 rounded-3xl shadow-xl">
                 {/*Title*/}
                 <h1 className="mb-3">Evaluation Form Experts</h1>
-                <MultiLine>{'TODO: description\n(also a small description per section)'}</MultiLine>
-
-                {/*Spacer*/}
-                <div className="h-5" />
+                <MultiLine className="mb-5">{'TODO: description\n(also a small description per section)'}</MultiLine>
 
                 <div className="grid grid-cols-2 gap-4">
                     <MultiLine>{'What is your \'participant ID\'?\n(the questions will be shuffled based on this ID)'}</MultiLine>
