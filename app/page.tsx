@@ -5,6 +5,18 @@ import { RichText } from '../util/rich_text';
 import Link from 'next/link';
 
 
+const text = '#Evaluation Form Experts\n' +
+    'Welcome to the evaluation form for "MILES" (Mixed-Initiative musicaL-interactivE System)!\n' +
+    'A while ago, you helped select 3 algorithms for use in an experiment. ' +
+    'That experiment has finished, and now we have a bunch of musical recordings that use these algorithms. ' +
+    'In this survey, you will listen to these recordings, and compare and grade them.\n' +
+    '---\n' +
+    'The survey is expected to take about 60 minutes. ' +
+    'Your progress will be stored, so if you\'ve started filing in this form earlier, you will be taken to where you left off. ' +
+    'Thanks again, and good luck!\n' +
+    '---'
+
+
 export default function Page() {
     const [participantId, setParticipantId] = React.useState<number>(0);
 
@@ -12,15 +24,10 @@ export default function Page() {
         <div className="flex flex-col gap-12 sm:gap-16">
             <section className="bg-amber-100 p-10 rounded-3xl shadow-xl">
                 {/*Text*/}
-                <RichText className="mb-5">
-                    {'#Evaluation Form Experts\n' +
-                        'TODO: description\n' +
-                        '(also a small description per section)\n' +
-                        '(also: if you\'ve started already, your progress will be saved)'}
-                </RichText>
+                <RichText>{text}</RichText>
 
                 <div className="grid grid-cols-2 gap-4">
-                    <RichText>{'What is your \'participant ID\'?\n(the questions will be shuffled based on this ID)'}</RichText>
+                    <RichText>{'If all went well, I\'ve given you a \'participant ID\'.\nFill it in, and continue to the form!'}</RichText>
 
                     {/*Input field*/}
                     <input value={participantId.toString()}
@@ -37,7 +44,7 @@ export default function Page() {
                 <div className="h-5" />
 
                 <Link
-                    className="w-fit bg-blue-500 rounded-md p-4 cursor-pointer flex items-center justify-center no-underline"
+                    className="ml-auto w-fit bg-blue-500 rounded-md p-4 cursor-pointer flex items-center justify-center no-underline"
                     href={{ pathname: '/form', query: { id: participantId } }}>
                     <p className="text-white mx-5">Start form</p>
                 </Link>
