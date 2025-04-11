@@ -1,5 +1,6 @@
 ﻿export type OrderingConfig = {
     type: 'ordering',
+    id ?: string,
     text: string,
 
     urls: { [id: string]: string[][] }
@@ -7,6 +8,7 @@
 
 export type ScoringConfig = {
     type: 'scoring',
+    id ?: string,
     text: string,
 
     questions: string[],
@@ -16,11 +18,13 @@ export type ScoringConfig = {
 
 export type FinishingConfig = {
     type: 'finishing',
+    id ?: string,
     text: string,
 }
 
 export type InfoConfig = {
     type: 'info',
+    id ?: string,
     text: string,
 }
 
@@ -42,13 +46,15 @@ export const config: Config = [
     {
         type: 'info',
         text: '#First up: ordering\n' +
-            'In this exercise, you will be shown two videos.\n' +
+            'In this exercise, you will be shown two videos:\n' +
+            '![](images/order_sheet.png)' +
             'These two videos have the same player, algorithm and song. The only difference is that of them was recorded at the start of the research, and one of them was recorded at the end.\n' +
             'Your job is to select the recording which was recorded first. Good luck!',
     },
 
     {
         type: 'ordering',
+        id: 'ordering',
         text: '_Which recording was recorded first?_',
         urls: {
             0: [
@@ -108,11 +114,14 @@ export const config: Config = [
     {
         type: 'info',
         text: '#Next: scoring\n' +
-            'In the rest of this form, you will be shown recordings and will be asked to rate them along 4 categories. Good luck!',
+            'In the rest of this form, you will be shown recordings and will be asked to rate them along 4 categories:\n' +
+            '![](images/score_sheet.png)' +
+            'Good luck!',
     },
 
     {
         type: 'scoring',
+        id: 'scoring_1',
         text: '_How would you rate the following recording?_',
         questions: scoreQuestions,
         likertCount: 5,
@@ -179,6 +188,7 @@ export const config: Config = [
 
     {
         type: 'scoring',
+        id: 'scoring_2',
         text: '_How would you rate the following recording?_',
         questions: scoreQuestions,
         likertCount: 5,
@@ -245,6 +255,7 @@ export const config: Config = [
 
     {
         type: 'scoring',
+        id: 'scoring_3',
         text: '_How would you rate the following recording?_',
         questions: scoreQuestions,
         likertCount: 5,

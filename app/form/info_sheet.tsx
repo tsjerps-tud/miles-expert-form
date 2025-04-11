@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { RichText } from '../../util/rich_text';
-import { InfoConfig } from '../../form_config';
+import { InfoConfig } from '../../form.config';
 import { PageButton } from '../../util/page_button';
 
 

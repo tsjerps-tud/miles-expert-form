@@ -31,6 +31,10 @@
         @apply px-1 py-0.5 font-mono rounded bg-neutral-900 text-yellow-200;
         font-size: 0.9em;
     }
+
+    img {
+        @apply mt-3 mb-6 rounded-xl shadow-xl w-[80%];
+    }
 }
 
 @layer components {

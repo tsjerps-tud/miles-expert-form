@@ -1,8 +1,11 @@
-﻿import { setAt } from '../../util/array';
+﻿'use client';
+
+import { setAt } from '../../util/array';
 import React, { useState } from 'react';
 import { PageButton } from '../../util/page_button';
-import { OrderingConfig } from '../../form_config';
+import { OrderingConfig } from '../../form.config';
 import { RichText } from '../../util/rich_text';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 
 type OrderSheetProps = {
@@ -22,7 +25,7 @@ export function OrderSheet({ sheet, participantId, values, setValuesAction, adva
     const recordingCount = 2;
 
     // Define navigation
-    const [page, setPage] = useState<number>(0);
+    const [page, setPage] = useLocalStorage<number>(`miles_form_page_${sheet.id}`, 0);
     const gotoNextPage = () => setPage(Math.min(page + 1, pageCount));
 
     // Get all shown data

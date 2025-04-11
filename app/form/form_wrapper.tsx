@@ -1,13 +1,13 @@
 ﻿'use client';
 
-import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ScoreSheet from './score_sheet';
 import { OrderSheet } from './order_sheet';
 import { FinishingSheet } from './finishing_sheet';
-import { config, OrderingConfig, ScoringConfig } from '../../form_config';
+import { config, OrderingConfig, ScoringConfig } from '../../form.config';
 import { setAt } from '../../util/array';
 import InfoSheet from './info_sheet';
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 
 type PageWrapperProps = {}
@@ -15,10 +15,9 @@ export default function PageWrapper({}: PageWrapperProps) {
     // Get participant ID from search params
     const searchParams = useSearchParams();
     const participantId = Number(searchParams.get('id'));
-    const startState = Number(searchParams.get('state'));
 
     // Define values
-    const [values, setValues] = useState(config.map(sheet => {
+    const [values, setValues] = useLocalStorage("miles_form_values", config.map(sheet => {
         switch (sheet.type) {
             case 'scoring':
                 return (sheet as ScoringConfig).urls[participantId].map(_ => (
@@ -33,7 +32,7 @@ export default function PageWrapper({}: PageWrapperProps) {
     }));
 
     // Define sheet number
-    const [sheetNumber, setSheetNumber] = useState<number>(startState);
+    const [sheetNumber, setSheetNumber] = useLocalStorage<number>('miles_form_start_sheet', 0);
     const advance = () => setSheetNumber(sheetNumber + 1);
 
     const currentSheet = config[sheetNumber];

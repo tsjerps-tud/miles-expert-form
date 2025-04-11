@@ -1,8 +1,10 @@
-﻿import React, { useState } from 'react';
+﻿'use client';
+
 import { setAt } from '../../util/array';
 import { PageButton } from '../../util/page_button';
-import { ScoringConfig } from '../../form_config';
+import { ScoringConfig } from '../../form.config';
 import { RichText } from '../../util/rich_text';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 
 type ScoreSheetProps = {
@@ -21,7 +23,7 @@ export default function ScoreSheet({ sheet, participantId, values, setValuesActi
     const pageCount = urls.length;
 
     // Define navigation
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useLocalStorage<number>(`miles_form_page_${sheet.id}`, 0);
     const gotoNextPage = () => setPage(Math.min(page + 1, pageCount));
 
     // Get all shown data

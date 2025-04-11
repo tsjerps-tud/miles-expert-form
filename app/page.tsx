@@ -14,7 +14,9 @@ export default function Page() {
                 {/*Text*/}
                 <RichText className="mb-5">
                     {'#Evaluation Form Experts\n' +
-                        'TODO: description\n(also a small description per section)'}
+                        'TODO: description\n' +
+                        '(also a small description per section)\n' +
+                        '(also: if you\'ve started already, your progress will be saved)'}
                 </RichText>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -36,8 +38,8 @@ export default function Page() {
 
                 <Link
                     className="w-fit bg-blue-500 rounded-md p-4 cursor-pointer flex items-center justify-center no-underline"
-                    href={{ pathname: '/form', query: { id: participantId, state: 0 } }}>
-                    <p className="text-white mx-5">Go to form</p>
+                    href={{ pathname: '/form', query: { id: participantId } }}>
+                    <p className="text-white mx-5">Start form</p>
                 </Link>
             </section>
         </div>

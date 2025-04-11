@@ -1,6 +1,6 @@
 ﻿import { RichText } from '../../util/rich_text';
 import React from 'react';
-import { FinishingConfig } from '../../form_config';
+import { FinishingConfig } from '../../form.config';
 
 
 type FinishingSheetProps = {
