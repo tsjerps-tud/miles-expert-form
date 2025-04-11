@@ -1,13 +1,13 @@
 ﻿export type OrderingConfig = {
     type: 'ordering',
-    title: string,
+    text: string,
 
     urls: { [id: string]: string[][] }
 }
 
 export type ScoringConfig = {
     type: 'scoring',
-    title: string,
+    text: string,
 
     questions: string[],
     likertCount: number,
@@ -16,14 +16,12 @@ export type ScoringConfig = {
 
 export type FinishingConfig = {
     type: 'finishing',
-    title: string,
-    description: string,
+    text: string,
 }
 
 export type InfoConfig = {
     type: 'info',
-    title: string,
-    description: string,
+    text: string,
 }
 
 export type SheetConfig = OrderingConfig | ScoringConfig | FinishingConfig | InfoConfig;
@@ -43,15 +41,15 @@ const scoreQuestions = [
 export const config: Config = [
     {
         type: 'info',
-        title: 'First up: ordering',
-        description: 'In this exercise, you will be shown two videos.\n' +
+        text: '#First up: ordering\n' +
+            'In this exercise, you will be shown two videos.\n' +
             'These two videos have the same player, algorithm and song. The only difference is that of them was recorded at the start of the research, and one of them was recorded at the end.\n' +
             'Your job is to select the recording which was recorded first. Good luck!',
     },
 
     {
         type: 'ordering',
-        title: 'Which recording was recorded first?',
+        text: '_Which recording was recorded first?_',
         urls: {
             0: [
                 ['p3s1p1', 'p3s4p1'],
@@ -109,13 +107,13 @@ export const config: Config = [
 
     {
         type: 'info',
-        title: 'Next: scoring',
-        description: 'In the rest of this form, you will be shown recordings and will be asked to rate them along 4 categories. Good luck!',
+        text: '#Next: scoring\n' +
+            'In the rest of this form, you will be shown recordings and will be asked to rate them along 4 categories. Good luck!',
     },
 
     {
         type: 'scoring',
-        title: 'How would you rate the following recording?',
+        text: '_How would you rate the following recording?_',
         questions: scoreQuestions,
         likertCount: 5,
         urls: {
@@ -175,13 +173,13 @@ export const config: Config = [
 
     {
         type: 'info',
-        title: 'You\'re halfway there!',
-        description: 'Now\'s a good time to take a break if you want to.',
+        text: '#You\'re halfway there!\n' +
+            'Now\'s a good time to take a break if you want to.',
     },
 
     {
         type: 'scoring',
-        title: 'How would you rate the following recording?',
+        text: '_How would you rate the following recording?_',
         questions: scoreQuestions,
         likertCount: 5,
         urls: {
@@ -241,13 +239,13 @@ export const config: Config = [
 
     {
         type: 'info',
-        title: 'One more sheet to go!',
-        description: 'Fifteen more recordings to go, you can do this!',
+        text: '#One more sheet to go!\n' +
+            'Fifteen more recordings to go, you can do this!',
     },
 
     {
         type: 'scoring',
-        title: 'How would you rate the following recording?',
+        text: '_How would you rate the following recording?_',
         questions: scoreQuestions,
         likertCount: 5,
         urls: {
@@ -307,7 +305,7 @@ export const config: Config = [
 
     {
         type: 'finishing',
-        title: 'That\'s it!',
-        description: 'That was it!\nThank you so much for filling in the form. The only thing left is to copy the following results and send them to me!',
+        text: '#That\'s it!\n' +
+            'That was it!\nThank you so much for filling in the form. The only thing left is to copy the following results and send them to me!',
     },
 ];

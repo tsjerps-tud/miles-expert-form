@@ -2,6 +2,7 @@
 import { setAt } from '../../util/array';
 import { PageButton } from '../../util/page_button';
 import { ScoringConfig } from '../../form_config';
+import { RichText } from '../../util/rich_text';
 
 
 type ScoreSheetProps = {
@@ -33,8 +34,9 @@ export default function ScoreSheet({ sheet, participantId, values, setValuesActi
     return (
         <>
             {/*Scoring sheet*/}
-            <div className="grid grid-cols-2 gap-2 bg-blue-200 rounded-3xl shadow-xl p-10">
-                <div className="col-span-full text-center italic">{sheet.title}</div>
+            <div className="grid grid-cols-2 gap-2 bg-blue-200 rounded-3xl shadow-xl p-10 text-center">
+                {/*Text*/}
+                <RichText className="col-span-full">{sheet.text}</RichText>
 
                 {/*Video*/}
                 <div className="col-span-full my-3 flex justify-center">

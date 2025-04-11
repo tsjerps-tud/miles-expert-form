@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { PageButton } from '../../util/page_button';
 import { OrderingConfig } from '../../form_config';
+import { RichText } from '../../util/rich_text';
 
 
 type OrderSheetProps = {
@@ -33,8 +34,9 @@ export function OrderSheet({ sheet, participantId, values, setValuesAction, adva
 
     return (
         <>
-            <div className="bg-green-200 p-10 rounded-3xl shadow-xl">
-                <div className="text-center italic">{sheet.title}</div>
+            <div className="bg-green-200 p-10 rounded-3xl shadow-xl text-center">
+                {/*Text*/}
+                <RichText>{sheet.text}</RichText>
 
                 <div className="p-5 my-7 grid grid-cols-2 bg-green-300 rounded-xl gap-4 items-center">
                     {Array.from({ length: recordingCount }, (_, i) => (
