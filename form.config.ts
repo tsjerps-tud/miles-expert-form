@@ -250,7 +250,9 @@ export const config: Config = [
     {
         type: 'info',
         text: '#One more sheet to go!\n' +
-            'Fifteen more recordings to go, you can do this!',
+            'Fifteen more recordings to go, you can do this!\n' +
+            'A quick palette cleanser, if you need it:\n' +
+            '<iframe width="100%" style="aspect-ratio: 16 / 9; margin-top: 2.5rem" src="https://www.youtube.com/embed/1_6RQKoCTVY" allowfullscreen></iframe>',
     },
 
     {
