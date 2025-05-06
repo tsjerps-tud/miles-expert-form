@@ -20,7 +20,7 @@ export function FinishingSheet({ sheet, values }: FinishingSheetProps) {
                 <RichText>{sheet.text}</RichText>
 
                 <textarea value={output} rows={5}
-                       className="bg-white w-full rounded-md border-2 border-gray-400 border-solid p-1 px-5 break-words" />
+                       className="bg-white w-full rounded-md border-2 border-gray-400 border-solid p-1 px-5 mt-5 break-words" />
             </div>
         </>
     );
