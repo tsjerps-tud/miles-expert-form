@@ -48,14 +48,14 @@ export const config: Config = [
         text: '#First up: ordering\n' +
             'In this exercise, you will be shown two videos:\n' +
             '![](images/order_sheet.png)' +
-            'These two videos have the same player, algorithm and song. The only difference is that of them was recorded at the start of the research, and one of them was recorded at the end.\n' +
-            'Your job is to select the recording which was recorded first. Good luck!',
+            'The two videos have the same player, algorithm and song. The only difference is that of them was recorded at the start of the research (the first session), and one of them was recorded at the end (the fourth session).\n' +
+            'Your job is to determine which of the two recordings which was recorded **at the end of the research**. Good luck!',
     },
 
     {
         type: 'ordering',
         id: 'ordering',
-        text: '_Which recording was recorded first?_',
+        text: '_Which recording was recorded *last*?_',
         urls: {
             0: [
                 ['p3s1p1', 'p3s4p1'],
@@ -183,7 +183,9 @@ export const config: Config = [
     {
         type: 'info',
         text: '#You\'re halfway there!\n' +
-            'Now\'s a good time to take a break if you want to.',
+            'Now\'s a good time to take a break if you want to.\n' +
+            'A quick palette cleanser, if you need it:\n' +
+            '<iframe width="100%" style="aspect-ratio: 16 / 9; margin-top: 2.5rem; border-radius: 20px;" src="https://www.youtube.com/embed/1_6RQKoCTVY" allowfullscreen></iframe>',
     },
 
     {
@@ -250,9 +252,7 @@ export const config: Config = [
     {
         type: 'info',
         text: '#One more sheet to go!\n' +
-            'Fifteen more recordings to go, you can do this!\n' +
-            'A quick palette cleanser, if you need it:\n' +
-            '<iframe width="100%" style="aspect-ratio: 16 / 9; margin-top: 2.5rem" src="https://www.youtube.com/embed/1_6RQKoCTVY" allowfullscreen></iframe>',
+            'Fifteen more recordings to go, you can do this!'
     },
 
     {

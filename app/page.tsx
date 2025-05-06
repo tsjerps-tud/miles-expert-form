@@ -11,7 +11,7 @@ const text = '#Evaluation Form Experts\n' +
     'That experiment has finished, and now we have a bunch of musical recordings that use these algorithms. ' +
     'In this survey, you will listen to these recordings, and compare and grade them.\n' +
     '---\n' +
-    'The survey is expected to take about 60 minutes. ' +
+    'The survey is expected to take about 45 minutes. I highly recommend that you take a break halfway through, as this form can be quite tedious to fill in. ' +
     'Your progress will be stored, so if you\'ve started filing in this form earlier, you will be taken to where you left off. ' +
     'Thanks again, and good luck!\n' +
     '---'
