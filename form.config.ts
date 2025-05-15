@@ -45,77 +45,10 @@ const scoreQuestions = [
 export const config: Config = [
     {
         type: 'info',
-        text: '#First up: ordering\n' +
-            'In this exercise, you will be shown two videos:\n' +
-            '![](images/order_sheet.png)' +
-            'The two videos have the same player, algorithm and song. The only difference is that of them was recorded at the start of the research (the first session), and one of them was recorded at the end (the fourth session).\n' +
-            'Your job is to determine which of the two recordings which was recorded **at the end of the research**. Good luck!',
-    },
-
-    {
-        type: 'ordering',
-        id: 'ordering',
-        text: '_Which recording was recorded *last*?_',
-        urls: {
-            0: [
-                ['p3s1p1', 'p3s4p1'],
-                ['p4s4p2', 'p4s1p2'],
-                ['p5s1p3', 'p5s4p3'],
-                ['p1s4p1', 'p1s1p1'],
-                ['p2s1p2', 'p2s4p2'],
-                ['p3s1p3', 'p3s4p3'],
-                ['p4s1p1', 'p4s4p1'],
-                ['p5s4p2', 'p5s1p2'],
-                ['p1s4p3', 'p1s1p3'],
-                ['p2s1p1', 'p2s4p1'],
-                ['p3s4p2', 'p3s1p2'],
-                ['p4s4p3', 'p4s1p3'],
-                ['p5s4p1', 'p5s1p1'],
-                ['p1s4p2', 'p1s1p2'],
-                ['p2s4p3', 'p2s1p3']
-            ],
-            1: [
-                ['p1s4p1', 'p1s1p1'],
-                ['p2s1p2', 'p2s4p2'],
-                ['p3s4p3', 'p3s1p3'],
-                ['p4s4p1', 'p4s1p1'],
-                ['p5s4p2', 'p5s1p2'],
-                ['p1s1p3', 'p1s4p3'],
-                ['p2s4p1', 'p2s1p1'],
-                ['p3s1p2', 'p3s4p2'],
-                ['p4s1p3', 'p4s4p3'],
-                ['p5s1p1', 'p5s4p1'],
-                ['p1s4p2', 'p1s1p2'],
-                ['p2s1p3', 'p2s4p3'],
-                ['p3s1p1', 'p3s4p1'],
-                ['p4s4p2', 'p4s1p2'],
-                ['p5s4p3', 'p5s1p3']
-            ],
-            2: [
-                ['p5s1p1', 'p5s4p1'],
-                ['p1s4p2', 'p1s1p2'],
-                ['p2s4p3', 'p2s1p3'],
-                ['p3s1p1', 'p3s4p1'],
-                ['p4s1p2', 'p4s4p2'],
-                ['p5s4p3', 'p5s1p3'],
-                ['p1s1p1', 'p1s4p1'],
-                ['p2s1p2', 'p2s4p2'],
-                ['p3s4p3', 'p3s1p3'],
-                ['p4s4p1', 'p4s1p1'],
-                ['p5s4p2', 'p5s1p2'],
-                ['p1s4p3', 'p1s1p3'],
-                ['p2s4p1', 'p2s1p1'],
-                ['p3s4p2', 'p3s1p2'],
-                ['p4s1p3', 'p4s4p3']
-            ]
-        }
-    },
-
-    {
-        type: 'info',
-        text: '#Next: scoring\n' +
-            'In the rest of this form, you will be shown recordings and will be asked to rate them along 4 categories:\n' +
+        text: '#How does this form work?\n' +
+            'In this form, you will be shown recordings and will be asked to rate them along 4 categories:\n' +
             '![](images/score_sheet.png)' +
+            'These four categories are the same as the ones you\'ve been grading your own performances with.\n' +
             'Good luck!',
     },
 
@@ -127,55 +60,22 @@ export const config: Config = [
         likertCount: 5,
         urls: {
             0: [
-                'p5s3p1',
-                'p5s1p1',
-                'p5s2p1',
-                'p1s2p2',
-                'p1s3p2',
-                'p1s1p2',
-                'p2s3p3',
-                'p2s1p3',
-                'p2s2p3',
-                'p3s1p1',
-                'p3s2p1',
-                'p3s3p1',
-                'p4s2p2',
-                'p4s3p2',
-                'p4s1p2'
+                "ex2_par2_per3",
+                "ex2_par1_per2",
+                "ex2_par1_per0",
+                "ex2_par2_per0",
             ],
             1: [
-                'p3s1p1',
-                'p3s2p1',
-                'p3s3p1',
-                'p4s2p2',
-                'p4s3p2',
-                'p4s1p2',
-                'p5s3p3',
-                'p5s1p3',
-                'p5s2p3',
-                'p1s2p1',
-                'p1s3p1',
-                'p1s1p1',
-                'p2s3p2',
-                'p2s1p2',
-                'p2s2p2'
+                "ex2_par2_per3",
+                "ex2_par0_per2",
+                "ex2_par0_per0",
+                "ex2_par2_per0",
             ],
             2: [
-                'p1s2p1',
-                'p1s3p1',
-                'p1s1p1',
-                'p2s3p2',
-                'p2s1p2',
-                'p2s2p2',
-                'p3s1p3',
-                'p3s2p3',
-                'p3s3p3',
-                'p4s2p1',
-                'p4s3p1',
-                'p4s1p1',
-                'p5s3p2',
-                'p5s1p2',
-                'p5s2p2'
+                "ex2_par1_per3",
+                "ex2_par0_per2",
+                "ex2_par0_per0",
+                "ex2_par1_per0",
             ]
         }
     },
@@ -196,122 +96,22 @@ export const config: Config = [
         likertCount: 5,
         urls: {
             0: [
-                'p5s3p3',
-                'p5s1p3',
-                'p5s2p3',
-                'p1s2p1',
-                'p1s3p1',
-                'p1s1p1',
-                'p2s3p2',
-                'p2s1p2',
-                'p2s2p2',
-                'p3s1p3',
-                'p3s2p3',
-                'p3s3p3',
-                'p4s2p1',
-                'p4s3p1',
-                'p4s1p1'
+                "ex2_par1_per1",
+                "ex2_par2_per1",
+                "ex2_par2_per2",
+                "ex2_par1_per3",
             ],
             1: [
-                'p3s1p3',
-                'p3s2p3',
-                'p3s3p3',
-                'p4s2p1',
-                'p4s3p1',
-                'p4s1p1',
-                'p5s3p2',
-                'p5s1p2',
-                'p5s2p2',
-                'p1s2p3',
-                'p1s3p3',
-                'p1s1p3',
-                'p2s3p1',
-                'p2s1p1',
-                'p2s2p1'
+                "ex2_par0_per1",
+                "ex2_par2_per1",
+                "ex2_par2_per2",
+                "ex2_par0_per3",
             ],
             2: [
-                'p1s2p3',
-                'p1s3p3',
-                'p1s1p3',
-                'p2s3p1',
-                'p2s1p1',
-                'p2s2p1',
-                'p3s1p2',
-                'p3s2p2',
-                'p3s3p2',
-                'p4s2p3',
-                'p4s3p3',
-                'p4s1p3',
-                'p5s3p1',
-                'p5s1p1',
-                'p5s2p1'
-            ]
-        }
-    },
-
-    {
-        type: 'info',
-        text: '#One more sheet to go!\n' +
-            'Fifteen more recordings to go, you can do this!'
-    },
-
-    {
-        type: 'scoring',
-        id: 'scoring_3',
-        text: '_How would you rate the following recording?_',
-        questions: scoreQuestions,
-        likertCount: 5,
-        urls: {
-            0: [
-                'p5s3p2',
-                'p5s1p2',
-                'p5s2p2',
-                'p1s2p3',
-                'p1s3p3',
-                'p1s1p3',
-                'p2s3p1',
-                'p2s1p1',
-                'p2s2p1',
-                'p3s1p2',
-                'p3s2p2',
-                'p3s3p2',
-                'p4s2p3',
-                'p4s3p3',
-                'p4s1p3'
-            ],
-            1: [
-                'p3s1p2',
-                'p3s2p2',
-                'p3s3p2',
-                'p4s2p3',
-                'p4s3p3',
-                'p4s1p3',
-                'p5s3p1',
-                'p5s1p1',
-                'p5s2p1',
-                'p1s2p2',
-                'p1s3p2',
-                'p1s1p2',
-                'p2s3p3',
-                'p2s1p3',
-                'p2s2p3'
-            ],
-            2: [
-                'p1s2p2',
-                'p1s3p2',
-                'p1s1p2',
-                'p2s3p3',
-                'p2s1p3',
-                'p2s2p3',
-                'p3s1p1',
-                'p3s2p1',
-                'p3s3p1',
-                'p4s2p2',
-                'p4s3p2',
-                'p4s1p2',
-                'p5s3p3',
-                'p5s1p3',
-                'p5s2p3'
+                "ex2_par0_per1",
+                "ex2_par1_per1",
+                "ex2_par1_per2",
+                "ex2_par0_per3",
             ]
         }
     },

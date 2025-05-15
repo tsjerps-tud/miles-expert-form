@@ -5,13 +5,13 @@ import { RichText } from '../util/rich_text';
 import Link from 'next/link';
 
 
-const text = '#Evaluation Form Experts\n' +
+const text = '#Peer Evaluation Form\n' +
     'Welcome to the evaluation form for "MILES" (Mixed-Initiative musicaL-interactivE System)!\n' +
-    'A while ago, you helped select 3 algorithms for use in an experiment. ' +
-    'That experiment has finished, and now we have a bunch of musical recordings that use these algorithms. ' +
-    'In this survey, you will listen to these recordings, and compare and grade them.\n' +
+    'On Wednesday, you played along with some algorithms. ' +
+    'Two others have done the same, and now we have a bunch of musical recordings that use these algorithms. ' +
+    'In this survey, you will listen to these recordings, and score them.\n' +
     '---\n' +
-    'The survey is expected to take about 45 minutes. I highly recommend that you take a break halfway through, as this form can be quite tedious to fill in. ' +
+    'The survey is expected to take about 15 minutes. ' +
     'Your progress will be stored, so if you\'ve started filing in this form earlier, you will be taken to where you left off. ' +
     'Thanks again, and good luck!\n' +
     '---'
